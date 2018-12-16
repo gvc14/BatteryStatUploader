@@ -1,0 +1,9 @@
+#!/bin/bash
+ipAndPort=$1
+while true; do
+    # Do what you want.
+    :	
+	str=`upower -i $(upower -e | grep '/battery') | grep --color=never -E percentage|xargs|cut -d' ' -f2|sed s/%//` 	
+	echo $str >> /dev/udp/"$ipAndPort";
+	sleep 2
+done
